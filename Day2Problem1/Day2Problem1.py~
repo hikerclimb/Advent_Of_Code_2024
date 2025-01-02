@@ -1,0 +1,26 @@
+with open("sampleInput.txt", "r") as file:
+
+    arr = []
+    dcounter = False
+    acounter = False
+    diff = 0
+        for xid,x in enumerate(file):
+            print("line:" + line)
+            print("x" + x)
+            input = x.split()
+            print(input)
+            if(xid <= 3):
+                diff = abs(int(x[xid]) - int(x[xid+1])) 
+            if(int(x[xid]) > int(x[xid+1]) and xid <= 3 and diff >= 1 and diff <=3):
+                dcounter = True
+            elif(int(x[xid]) < int(x[xid +1]) and xid <= 3 and diff >= 1 and diff <=3):
+                acounter = True
+            else:
+                acounter = False
+                dcounter = False
+                break
+            if(acounter == True or dcounter == True):
+                arr.push("1")
+            else:
+                arr.push("0")
+    print(arr)
