@@ -9,9 +9,8 @@ def main():
         countACounter = 0
         for y in file:
             input = y.split()
-            for xid,x in enumerate(input[0:len(input)]):
-                print("x:" + x)
-                diff = abs(int(input[xid]) - int(input[xid-1]))
+            for xid,x in enumerate(input[1:len(input)]):
+                diff = abs(int(input[xid]) - int(input[xid+1]))
                 if((int(input[xid]) < int(input[xid-1])) and diff >= 1 and diff <=3):
                     countDCounter = countDCounter + 1
                 elif((int(input[xid]) > int(input[xid-1])) and diff >= 1 and diff <=3):
