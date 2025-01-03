@@ -1,3 +1,14 @@
+def safeOrUnSafe(input):
+    countDCounter = 0
+    countACounter = 0
+    for xid,x in enumerate(input[1:len(input)]):
+        diff = abs(int(input[xid]) - int(input[xid+1]))
+        if((int(input[xid]) < int(input[xid+1])) and diff >= 1 and diff <=3):
+            countDCounter = countDCounter + 1
+        elif((int(input[xid]) > int(input[xid+1])) and diff >= 1 and diff <=3):
+            countACounter = countACounter + 1
+    return countDCounter, countACounter
+
 def main():
     with open("input.txt", "r") as file:
         arr = []
@@ -9,12 +20,7 @@ def main():
         countACounter = 0
         for y in file:
             input = y.split()
-            for xid,x in enumerate(input[1:len(input)]):
-                diff = abs(int(input[xid]) - int(input[xid+1]))
-                if((int(input[xid]) < int(input[xid+1])) and diff >= 1 and diff <=3):
-                    countDCounter = countDCounter + 1
-                elif((int(input[xid]) > int(input[xid+1])) and diff >= 1 and diff <=3):
-                    countACounter = countACounter + 1
+            countDCounter, countACounter = safeOrUnSafe(input)
             if(countACounter == (len(input) - 1)):
                 acounter = True
             elif(countDCounter == (len(input) - 1)):
